@@ -19,22 +19,22 @@ function createApp(database) {
     const age = req.query.age ? parseInt(req.query.age) : undefined;
     const type = req.query.type;
     const baseCost = database.findBasePriceByType(type).cost;
-    const datePlain = parsePlainDate(req.query.date);
-    const cost = calculateCost(age, type, datePlain, baseCost);
+    const date = parseDate(req.query.date);
+    const cost = calculateCost(age, type, date, baseCost);
     res.json({ cost });
   });
 
-  function parsePlainDate(dateString) {
+  function parseDate(dateString) {
     if (dateString) {
       return Temporal.PlainDate.from(dateString);
     }
   }
 
-  function calculateCost(age, type, datePlain, baseCost) {
+  function calculateCost(age, type, date, baseCost) {
     if (type === "night") {
       return calculateCostForNightTicket(age, baseCost);
     } else {
-      return calculateCostForDayTicket(age, datePlain, baseCost);
+      return calculateCostForDayTicket(age, date, baseCost);
     }
   }
 
@@ -51,8 +51,8 @@ function createApp(database) {
     return baseCost;
   }
 
-  function calculateCostForDayTicket(age, datePlain, baseCost) {
-    let reduction = calculateReduction(datePlain);
+  function calculateCostForDayTicket(age, date, baseCost) {
+    let reduction = calculateReduction(date);
     if (age === undefined) {
       return Math.ceil(baseCost * (1 - reduction / 100));
     }
@@ -68,23 +68,23 @@ function createApp(database) {
     return Math.ceil(baseCost * (1 - reduction / 100));
   }
 
-  function calculateReduction(datePlain) {
+  function calculateReduction(date) {
     let reduction = 0;
-    if (datePlain && isMonday(datePlain) && !isHoliday(datePlain)) {
+    if (date && isMonday(date) && !isHoliday(date)) {
       reduction = 35;
     }
     return reduction;
   }
 
-  function isMonday(datePlain) {
-    return datePlain.dayOfWeek === 1;
+  function isMonday(date) {
+    return date.dayOfWeek === 1;
   }
 
-  function isHoliday(datePlain) {
+  function isHoliday(date) {
     const holidays = database.getHolidays();
     for (let row of holidays) {
       let holidayPlain = Temporal.PlainDate.from(row.holiday);
-      if (datePlain.equals(holidayPlain)) {
+      if (date.equals(holidayPlain)) {
         return true;
       }
     }
