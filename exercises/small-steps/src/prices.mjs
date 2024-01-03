@@ -41,7 +41,7 @@ function createApp(database) {
     if (type === "night") {
       return calculateCostForNightTicket(age, baseCost);
     } else {
-      return calculateCostForDayTicket(age, date, datePlain, baseCost);
+      return calculateCostForDayTicket(age, datePlain, baseCost);
     }
   }
 
@@ -58,7 +58,7 @@ function createApp(database) {
     return baseCost;
   }
 
-  function calculateCostForDayTicket(age, date, datePlain, baseCost) {
+  function calculateCostForDayTicket(age, datePlain, baseCost) {
     let reduction = calculateReduction(datePlain);
     if (age === undefined) {
       return Math.ceil(baseCost * (1 - reduction / 100));
