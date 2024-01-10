@@ -4,7 +4,7 @@ This repository contains my submissions for the course [Test-Driven Development]
 
 ## Exercises
 
-|  #  | name                                          | status |
-| :-: | :-------------------------------------------- | :----: |
-|  1  | [Small, safe steps](./exercises/small-steps/) |   ✓    |
-|  2  | [Tetris](./exercises/tetris/)                 |        |
+|  #  | name                                          | hours | status |
+| :-: | :-------------------------------------------- | ----: | :----: |
+|  1  | [Small, safe steps](./exercises/small-steps/) |     3 |   ✓    |
+|  2  | [Tetris](./exercises/tetris/)                 |       |        |
