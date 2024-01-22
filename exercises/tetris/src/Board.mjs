@@ -11,6 +11,10 @@ export class Board {
       .map(() => Array(width).fill("."));
   }
 
+  drop(block) {
+    this.board[0][1] = block;
+  }
+
   toString() {
     return this.board.map((row) => row.join("")).join("\n") + "\n";
   }
