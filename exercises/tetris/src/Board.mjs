@@ -9,7 +9,9 @@ export class Board {
   }
 
   resetBoard(width, height) {
-    // todo
+    return Array(height)
+      .fill()
+      .map(() => Array(width).fill("."));
   }
 
   toString() {
