@@ -15,6 +15,6 @@ export class Board {
   }
 
   toString() {
-    return "...\n...\n...\n";
+    return this.board.map((row) => row.join("")).join("\n") + "\n";
   }
 }
