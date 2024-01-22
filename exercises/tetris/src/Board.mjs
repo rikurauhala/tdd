@@ -5,10 +5,10 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.board = this.generateGrid(width, height);
+    this.board = this.resetBoard(width, height);
   }
 
-  generateGrid(width, height) {
+  resetBoard(width, height) {
     // todo
   }
 
