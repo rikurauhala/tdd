@@ -4,6 +4,7 @@ export class Board {
     this.height = height;
     this.board = this.resetBoard(width, height);
     this.previousPosition = null;
+    this.previousBlock = null;
   }
 
   resetBoard(width, height) {
@@ -15,12 +16,13 @@ export class Board {
   drop(block) {
     this.board[0][1] = block;
     this.previousPosition = [0, 1];
+    this.previousBlock = block;
   }
 
   tick() {
     const [row, column] = this.previousPosition;
     this.board[row][column] = ".";
-    this.board[row + 1][column] = "X";
+    this.board[row + 1][column] = this.previousBlock;
     this.previousPosition = [row + 1, column];
   }
 
