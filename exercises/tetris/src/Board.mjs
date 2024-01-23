@@ -3,7 +3,7 @@ export class Board {
     this.width = width;
     this.height = height;
     this.board = this.resetBoard(width, height);
-    this.falling = false;
+    this.hasFalling = false;
     this.previousPosition = null;
     this.previousBlock = null;
   }
@@ -15,11 +15,11 @@ export class Board {
   }
 
   drop(block) {
-    if (this.falling) {
+    if (this.hasFalling) {
       throw new Error("already falling");
     }
     this.board[0][1] = block;
-    this.falling = true;
+    this.hasFalling = true;
     this.previousPosition = [0, 1];
     this.previousBlock = block;
   }
@@ -29,6 +29,10 @@ export class Board {
     this.board[row][column] = ".";
     this.board[row + 1][column] = this.previousBlock;
     this.previousPosition = [row + 1, column];
+  }
+
+  hasFalling() {
+    return this.hasFalling;
   }
 
   toString() {
