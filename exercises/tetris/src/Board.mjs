@@ -26,9 +26,14 @@ export class Board {
 
   tick() {
     const [row, column] = this.previousPosition;
-    this.board[row][column] = ".";
-    this.board[row + 1][column] = this.previousBlock;
-    this.previousPosition = [row + 1, column];
+    const nextRow = row + 1;
+    if (nextRow < this.height && this.board[nextRow][column] === ".") {
+      this.board[row][column] = ".";
+      this.board[nextRow][column] = this.previousBlock;
+      this.previousPosition = [nextRow, column];
+    } else {
+      this.falling = false;
+    }
   }
 
   hasFalling() {
