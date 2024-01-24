@@ -7,6 +7,10 @@ export class RotatingShape {
     return shapeString.split("\n").map((row) => row.trim().split(""));
   }
 
+  rotateRight() {
+    // implement
+  }
+
   toString() {
     return this.shape.map((row) => row.join("")).join("\n") + "\n";
   }
