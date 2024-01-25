@@ -9,10 +9,14 @@ export class RotatingShape {
 
   rotateRight() {
     const rotatedShape = this.shape[0].map((_, col) => this.shape.map((row) => row[col]).reverse());
-    return new RotatingShape(rotatedShape.map((row) => row.join("")).join("\n"));
+    return new RotatingShape(this.stringify(rotatedShape));
+  }
+
+  stringify(shape) {
+    return shape.map((row) => row.join("")).join("\n");
   }
 
   toString() {
-    return this.shape.map((row) => row.join("")).join("\n") + "\n";
+    return this.stringify(this.shape) + "\n";
   }
 }
