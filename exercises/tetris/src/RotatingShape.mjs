@@ -8,7 +8,8 @@ export class RotatingShape {
   }
 
   rotateRight() {
-    // implement
+    const rotatedShape = this.shape[0].map((_, col) => this.shape.map((row) => row[col]).reverse());
+    return new RotatingShape(rotatedShape.map((row) => row.join("")).join("\n"));
   }
 
   toString() {
