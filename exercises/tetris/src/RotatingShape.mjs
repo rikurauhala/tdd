@@ -12,6 +12,11 @@ export class RotatingShape {
     return new RotatingShape(this.stringify(rotatedShape));
   }
 
+  rotateLeft() {
+    const rotatedShape = this.shape[0].map((_, col) => this.shape.map((row) => row[col]));
+    return new RotatingShape(this.stringify(rotatedShape.reverse()));
+  }
+
   stringify(shape) {
     return shape.map((row) => row.join("")).join("\n");
   }
