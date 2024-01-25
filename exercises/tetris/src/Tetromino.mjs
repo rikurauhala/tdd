@@ -1,6 +1,14 @@
 import { RotatingShape } from "./RotatingShape";
 
 export class Tetromino {
+  static I_SHAPE = new Tetromino(
+    `.....
+     .....
+     IIII.
+     .....
+     .....`
+  );
+
   static T_SHAPE = new Tetromino(
     `.T.
      TTT
