@@ -23,7 +23,7 @@ export class Shape {
      TTT
      .T.`,
     `.T.
-     TT
+     TT.
      .T.`,
   ];
 }
