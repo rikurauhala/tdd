@@ -27,7 +27,7 @@ export class Shape {
      .T.`,
   ];
 
-  static returnShape(letter) {
+  static getShape(letter) {
     const shapes = { I: Shape.I_SHAPE, T: Shape.T_SHAPE };
     return shapes[letter];
   }

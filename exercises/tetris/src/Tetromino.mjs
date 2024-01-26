@@ -5,11 +5,12 @@ export class Tetromino {
   static I_SHAPE = new Tetromino(Shape.I_SHAPE[0]);
   static T_SHAPE = new Tetromino(Shape.T_SHAPE[0]);
 
-  constructor(shapeString) {
+  constructor(shapeString, letter = null, rotation = 0) {
     const possibleRotations = { I: 2, T: 4 };
-    const letter = this.determineLetter(shapeString);
-    this.rotations = possibleRotations[letter];
-    this.shape = new RotatingShape(shapeString);
+    this.letter = letter ? letter : this.determineLetter(shapeString);
+    this.rotations = possibleRotations[this.letter];
+    this.rotation = rotation;
+    this.shape = new RotatingShape(Shape.getRotation(Shape.getShape(this.letter), this.rotation));
   }
 
   determineLetter(shapeString) {
@@ -17,11 +18,11 @@ export class Tetromino {
   }
 
   rotateRight() {
-    return this.shape.rotateRight();
+    return new Tetromino(this.shape.toString(), this.letter, (this.rotation + 1) % this.rotations);
   }
 
   rotateLeft() {
-    return this.shape.rotateLeft();
+    return new Tetromino(this.shape.toString(), this.letter, (this.rotation - 1 + this.rotations) % this.rotations);
   }
 
   toString() {
