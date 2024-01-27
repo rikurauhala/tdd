@@ -7,7 +7,11 @@ export class Tetromino {
   static T_SHAPE = new Tetromino(Shape.T_SHAPE[0]);
 
   constructor(shapeString, letter = null, rotation = 0) {
-    const possibleRotations = { I: 2, O: 1, T: 4 };
+    const possibleRotations = {
+      I: Shape.I_SHAPE.length,
+      O: Shape.O_SHAPE.length,
+      T: Shape.T_SHAPE.length,
+    };
     this.letter = letter ? letter : this.determineLetter(shapeString);
     this.rotations = possibleRotations[this.letter];
     this.rotation = rotation;
