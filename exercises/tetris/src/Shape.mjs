@@ -1,37 +1,49 @@
 export class Shape {
-  static I_SHAPE = [
-    `.....
-     .....
-     IIII.
-     .....
-     .....`,
-    `..I..
-     ..I..
-     ..I..
-     ..I..
-     .....`,
-  ];
+  static I_SHAPE = {
+    letter: "I",
+    size: 5,
+    rotations: [
+      `.....
+       .....
+       IIII.
+       .....
+       .....`,
+      `..I..
+       ..I..
+       ..I..
+       ..I..
+       .....`,
+    ],
+  };
 
-  static O_SHAPE = [
-    `.OO
-     .OO
-     ...`,
-  ];
+  static O_SHAPE = {
+    letter: "O",
+    size: 3,
+    rotations: [
+      `.OO
+       .OO
+       ...`,
+    ],
+  };
 
-  static T_SHAPE = [
-    `.T.
-     TTT
-     ...`,
-    `.T.
-     .TT
-     .T.`,
-    `...
-     TTT
-     .T.`,
-    `.T.
-     TT.
-     .T.`,
-  ];
+  static T_SHAPE = {
+    letter: "T",
+    size: 3,
+    rotations: [
+      `.T.
+       TTT
+       ...`,
+      `.T.
+       .TT
+       .T.`,
+      `...
+       TTT
+       .T.`,
+      `.T.
+       TT.
+       .T.`,
+    ],
+  };
 
   static getShape(letter) {
     const shapes = { I: Shape.I_SHAPE, O: Shape.O_SHAPE, T: Shape.T_SHAPE };
@@ -39,8 +51,8 @@ export class Shape {
   }
 
   static getRotation(shape, rotation) {
-    const rotations = shape.length;
+    const rotations = shape.rotations.length;
     const normalizedRotation = ((rotation % rotations) + rotations) % rotations;
-    return shape[normalizedRotation];
+    return shape.rotations[normalizedRotation];
   }
 }
