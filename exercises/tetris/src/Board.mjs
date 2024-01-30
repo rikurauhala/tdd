@@ -23,11 +23,11 @@ export class Board {
     if (block instanceof Tetromino) {
       block = block.toString().split("\n");
     }
-    const size = block[0].length;
-    const startingCol = Math.floor((this.width - size) / 2);
+    const blockWidth = block[0].length;
+    const startingCol = Math.floor((this.width - blockWidth) / 2);
     const startingRow = 0;
-    for (let row = 0; row < size; row++) {
-      for (let col = 0; col < size; col++) {
+    for (let row = 0; row < blockWidth; row++) {
+      for (let col = 0; col < blockWidth; col++) {
         this.board[startingRow + row][startingCol + col] = block[row][col];
       }
     }
