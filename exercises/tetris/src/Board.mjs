@@ -21,6 +21,9 @@ export class Board {
       throw new Error("already falling");
     }
     const startingCol = Math.floor(this.width / 2);
+    if (block instanceof Tetromino) {
+      block = block.toString().split("\n");
+    }
     const size = block[0].length;
     for (let row = 0; row < size; row++) {
       for (let col = 0; col < size; col++) {
