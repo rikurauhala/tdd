@@ -20,7 +20,7 @@ export class Board {
     if (this.falling) {
       throw new Error("already falling");
     }
-    const startingCol = Math.floor(this.width / 2);
+    const startingCol = this.calculateStartingCol(block);
     const startingRow = 0;
     if (block instanceof Tetromino) {
       block = block.toString().split("\n");
@@ -36,6 +36,14 @@ export class Board {
     this.previousBlock = block;
   }
 
+  calculateStartingCol(block) {
+    const blockWidth = block instanceof Tetromino ? block.shape.shape[0][0].length : block[0].length;
+    let startingCol = Math.floor((this.width - blockWidth) / 2);
+    if (this.width % 2 === 0) {
+      startingCol--;
+    }
+    return startingCol;
+  }
   tick() {
     const [row, column] = this.previousPosition;
     const nextRow = row + 1;
