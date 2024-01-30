@@ -8,6 +8,7 @@ export class Board {
     this.falling = false;
     this.previousPosition = null;
     this.previousBlock = null;
+    this.previousLetter = null;
   }
 
   resetBoard(width, height) {
@@ -21,7 +22,10 @@ export class Board {
       throw new Error("already falling");
     }
     if (block instanceof Tetromino) {
+      this.previousLetter = block.letter;
       block = block.toString().split("\n");
+    } else {
+      this.previousLetter = block;
     }
     const blockWidth = block[0].length;
     const startingCol = Math.floor((this.width - blockWidth) / 2);
