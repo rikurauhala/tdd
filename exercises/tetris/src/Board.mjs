@@ -21,17 +21,18 @@ export class Board {
       throw new Error("already falling");
     }
     const startingCol = Math.floor(this.width / 2);
+    const startingRow = 0;
     if (block instanceof Tetromino) {
       block = block.toString().split("\n");
     }
     const size = block[0].length;
     for (let row = 0; row < size; row++) {
       for (let col = 0; col < size; col++) {
-        this.board[row][startingCol + col] = block[row][col];
+        this.board[startingRow + row][startingCol + col] = block[row][col];
       }
     }
     this.falling = true;
-    this.previousPosition = [0, startingCol];
+    this.previousPosition = [startingRow, startingCol];
     this.previousBlock = block;
   }
 
