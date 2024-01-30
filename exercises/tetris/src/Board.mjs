@@ -1,3 +1,5 @@
+import { Tetromino } from "./Tetromino.mjs";
+
 export class Board {
   constructor(width, height) {
     this.width = width;
@@ -18,9 +20,15 @@ export class Board {
     if (this.falling) {
       throw new Error("already falling");
     }
-    this.board[0][1] = block;
+    const startingCol = Math.floor(this.width / 2);
+    const size = block[0].length;
+    for (let row = 0; row < size; row++) {
+      for (let col = 0; col < size; col++) {
+        this.board[row][startingCol + col] = block[row][col];
+      }
+    }
     this.falling = true;
-    this.previousPosition = [0, 1];
+    this.previousPosition = [0, startingCol];
     this.previousBlock = block;
   }
 
