@@ -54,7 +54,7 @@ export class Board {
       this.falling = false;
       return;
     }
-    this.moveBlockDown(currentRow, startingCol, blockWidth);
+    this.moveBlockDown(currentRow, startingCol);
   }
 
   canMoveDown(currentRow, startingCol) {
@@ -69,16 +69,16 @@ export class Board {
     return true;
   }
 
-  moveBlockDown(currentRow, startingCol, blockWidth) {
-    for (let row = 0; row < blockWidth; row++) {
-      for (let col = 0; col < blockWidth; col++) {
+  moveBlockDown(currentRow, startingCol) {
+    for (let row = 0; row < this.previousBlockWidth; row++) {
+      for (let col = 0; col < this.previousBlockHeight; col++) {
         this.board[currentRow + row][startingCol + col] = ".";
       }
     }
 
     const nextRow = currentRow + 1;
-    for (let row = 0; row < blockWidth; row++) {
-      for (let col = 0; col < blockWidth; col++) {
+    for (let row = 0; row < this.previousBlockWidth; row++) {
+      for (let col = 0; col < this.previousBlockHeight; col++) {
         this.board[nextRow + row][startingCol + col] = this.previousBlock[row][col];
       }
     }
