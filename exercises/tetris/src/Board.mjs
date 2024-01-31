@@ -10,7 +10,6 @@ export class Board {
     this.previousBlock = null;
     this.previousBlockWidth = null;
     this.previousBlockHeight = null;
-    this.previousLetter = null;
   }
 
   resetBoard(width, height) {
@@ -24,13 +23,10 @@ export class Board {
       throw new Error("already falling");
     }
     if (block instanceof Tetromino) {
-      this.previousLetter = block.letter;
       block = block
         .toString()
         .split("\n")
         .filter((row) => row);
-    } else {
-      this.previousLetter = block;
     }
     this.previousBlock = block;
     this.previousBlockWidth = block[0].length;
