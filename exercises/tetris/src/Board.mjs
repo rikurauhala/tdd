@@ -46,10 +46,7 @@ export class Board {
     if (!this.falling) {
       return;
     }
-
     const [currentRow, startingCol] = this.previousPosition;
-    const blockWidth = this.previousBlock[0].length;
-
     if (!this.canMoveDown(currentRow, startingCol)) {
       this.falling = false;
       return;
