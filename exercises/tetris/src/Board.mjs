@@ -9,7 +9,7 @@ export class Board {
     this.previousPosition = null;
     this.previousBlock = null;
     this.blockWidth = null;
-    this.previousBlockHeight = null;
+    this.blockHeight = null;
   }
 
   resetBoard(width, height) {
@@ -30,10 +30,10 @@ export class Board {
     }
     this.previousBlock = block;
     this.blockWidth = block[0].length;
-    this.previousBlockHeight = block.length;
+    this.blockHeight = block.length;
     const startingCol = Math.floor((this.width - this.blockWidth) / 2);
     const startingRow = 0;
-    for (let row = 0; row < this.previousBlockHeight; row++) {
+    for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
         this.board[startingRow + row][startingCol + col] = block[row][col];
       }
@@ -55,11 +55,11 @@ export class Board {
   }
 
   canMoveDown(currentRow, startingCol) {
-    if (currentRow + this.previousBlockHeight >= this.height) {
+    if (currentRow + this.blockHeight >= this.height) {
       return false;
     }
     for (let col = 0; col < this.blockWidth; col++) {
-      if (this.board[currentRow + this.previousBlockHeight][startingCol + col] !== ".") {
+      if (this.board[currentRow + this.blockHeight][startingCol + col] !== ".") {
         return false;
       }
     }
@@ -68,13 +68,13 @@ export class Board {
 
   moveBlockDown(currentRow, startingCol) {
     for (let row = 0; row < this.blockWidth; row++) {
-      for (let col = 0; col < this.previousBlockHeight; col++) {
+      for (let col = 0; col < this.blockHeight; col++) {
         this.board[currentRow + row][startingCol + col] = ".";
       }
     }
 
     const nextRow = currentRow + 1;
-    for (let row = 0; row < this.previousBlockHeight; row++) {
+    for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
         this.board[nextRow + row][startingCol + col] = this.previousBlock[row][col];
       }
