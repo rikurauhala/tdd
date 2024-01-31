@@ -6,7 +6,8 @@ export class Board {
     this.height = height;
     this.board = this.resetBoard(width, height);
     this.falling = false;
-    this.previousPosition = null;
+    this.row = null;
+    this.col = null;
     this.block = null;
     this.blockWidth = null;
     this.blockHeight = null;
@@ -39,19 +40,19 @@ export class Board {
       }
     }
     this.falling = true;
-    this.previousPosition = [startingRow, startingCol];
+    this.row = startingRow;
+    this.col = startingCol;
   }
 
   tick() {
     if (!this.falling) {
       return;
     }
-    const [currentRow, startingCol] = this.previousPosition;
-    if (!this.canMoveDown(currentRow, startingCol)) {
+    if (!this.canMoveDown(this.row, this.col)) {
       this.falling = false;
       return;
     }
-    this.moveBlockDown(currentRow, startingCol);
+    this.moveBlockDown(this.row, this.col);
   }
 
   canMoveDown(currentRow, startingCol) {
@@ -72,15 +73,14 @@ export class Board {
         this.board[currentRow + row][startingCol + col] = ".";
       }
     }
-
     const nextRow = currentRow + 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
         this.board[nextRow + row][startingCol + col] = this.block[row][col];
       }
     }
-
-    this.previousPosition = [nextRow, startingCol];
+    this.row = nextRow;
+    this.col = startingCol;
   }
 
   hasFalling() {
