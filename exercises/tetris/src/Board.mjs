@@ -44,15 +44,47 @@ export class Board {
   }
 
   tick() {
-    const [row, column] = this.previousPosition;
-    const nextRow = row + 1;
-    if (nextRow < this.height && this.board[nextRow][column] === ".") {
-      this.board[row][column] = ".";
-      this.board[nextRow][column] = this.previousBlock;
-      this.previousPosition = [nextRow, column];
-    } else {
-      this.falling = false;
+    if (!this.falling) {
+      return;
     }
+
+    const [currentRow, startingCol] = this.previousPosition;
+    const blockWidth = this.previousBlock[0].length;
+
+    if (!this.canMoveDown(currentRow, startingCol, blockWidth)) {
+      this.falling = false;
+      return;
+    }
+    this.moveBlockDown(currentRow, startingCol, blockWidth);
+  }
+
+  canMoveDown(currentRow, startingCol, blockWidth) {
+    if (currentRow + blockWidth >= this.height) {
+      return false;
+    }
+    for (let col = 0; col < blockWidth; col++) {
+      if (this.board[currentRow + blockWidth][startingCol + col] !== ".") {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  moveBlockDown(currentRow, startingCol, blockWidth) {
+    for (let row = 0; row < blockWidth; row++) {
+      for (let col = 0; col < blockWidth; col++) {
+        this.board[currentRow + row][startingCol + col] = ".";
+      }
+    }
+
+    const nextRow = currentRow + 1;
+    for (let row = 0; row < blockWidth; row++) {
+      for (let col = 0; col < blockWidth; col++) {
+        this.board[nextRow + row][startingCol + col] = this.previousBlock[row][col];
+      }
+    }
+
+    this.previousPosition = [nextRow, startingCol];
   }
 
   hasFalling() {
