@@ -7,7 +7,7 @@ export class Board {
     this.board = this.resetBoard(width, height);
     this.falling = false;
     this.previousPosition = null;
-    this.previousBlock = null;
+    this.block = null;
     this.blockWidth = null;
     this.blockHeight = null;
   }
@@ -28,7 +28,7 @@ export class Board {
         .split("\n")
         .filter((row) => !/^\.*$/.test(row.trim()));
     }
-    this.previousBlock = block;
+    this.block = block;
     this.blockWidth = block[0].length;
     this.blockHeight = block.length;
     const startingCol = Math.floor((this.width - this.blockWidth) / 2);
@@ -76,7 +76,7 @@ export class Board {
     const nextRow = currentRow + 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
-        this.board[nextRow + row][startingCol + col] = this.previousBlock[row][col];
+        this.board[nextRow + row][startingCol + col] = this.block[row][col];
       }
     }
 
