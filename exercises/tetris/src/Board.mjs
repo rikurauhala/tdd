@@ -55,11 +55,11 @@ export class Board {
   }
 
   canMoveDown(currentRow, startingCol) {
-    if (currentRow + this.previousBlockWidth >= this.height) {
+    if (currentRow + this.previousBlockHeight >= this.height) {
       return false;
     }
     for (let col = 0; col < this.previousBlockWidth; col++) {
-      if (this.board[currentRow + this.previousBlockWidth][startingCol + col] !== ".") {
+      if (this.board[currentRow + this.previousBlockHeight][startingCol + col] !== ".") {
         return false;
       }
     }
