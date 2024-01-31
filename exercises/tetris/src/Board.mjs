@@ -50,19 +50,19 @@ export class Board {
     const [currentRow, startingCol] = this.previousPosition;
     const blockWidth = this.previousBlock[0].length;
 
-    if (!this.canMoveDown(currentRow, startingCol, blockWidth)) {
+    if (!this.canMoveDown(currentRow, startingCol)) {
       this.falling = false;
       return;
     }
     this.moveBlockDown(currentRow, startingCol, blockWidth);
   }
 
-  canMoveDown(currentRow, startingCol, blockWidth) {
-    if (currentRow + blockWidth >= this.height) {
+  canMoveDown(currentRow, startingCol) {
+    if (currentRow + this.previousBlockWidth >= this.height) {
       return false;
     }
-    for (let col = 0; col < blockWidth; col++) {
-      if (this.board[currentRow + blockWidth][startingCol + col] !== ".") {
+    for (let col = 0; col < this.previousBlockWidth; col++) {
+      if (this.board[currentRow + this.previousBlockWidth][startingCol + col] !== ".") {
         return false;
       }
     }
