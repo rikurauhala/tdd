@@ -8,6 +8,8 @@ export class Board {
     this.falling = false;
     this.previousPosition = null;
     this.previousBlock = null;
+    this.previousBlockWidth = null;
+    this.previousBlockHeight = null;
     this.previousLetter = null;
   }
 
@@ -30,17 +32,18 @@ export class Board {
     } else {
       this.previousLetter = block;
     }
-    const blockWidth = block[0].length;
-    const startingCol = Math.floor((this.width - blockWidth) / 2);
+    this.previousBlock = block;
+    this.previousBlockWidth = block[0].length;
+    this.previousBlockHeight = block.length;
+    const startingCol = Math.floor((this.width - this.previousBlockWidth) / 2);
     const startingRow = 0;
-    for (let row = 0; row < blockWidth; row++) {
-      for (let col = 0; col < blockWidth; col++) {
+    for (let row = 0; row < this.previousBlockWidth; row++) {
+      for (let col = 0; col < this.previousBlockHeight; col++) {
         this.board[startingRow + row][startingCol + col] = block[row][col];
       }
     }
     this.falling = true;
     this.previousPosition = [startingRow, startingCol];
-    this.previousBlock = block;
   }
 
   tick() {
