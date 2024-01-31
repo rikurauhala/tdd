@@ -32,16 +32,14 @@ export class Board {
     this.block = block;
     this.blockWidth = block[0].length;
     this.blockHeight = block.length;
-    const startingCol = Math.floor((this.boardWidth - this.blockWidth) / 2);
-    const startingRow = 0;
+    this.row = 0;
+    this.col = Math.floor((this.boardWidth - this.blockWidth) / 2);
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
-        this.board[startingRow + row][startingCol + col] = block[row][col];
+        this.board[this.row + row][this.col + col] = block[row][col];
       }
     }
     this.falling = true;
-    this.row = startingRow;
-    this.col = startingCol;
   }
 
   tick() {
@@ -73,14 +71,12 @@ export class Board {
         this.board[this.row + row][this.col + col] = ".";
       }
     }
-    const nextRow = this.row + 1;
+    this.row += 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
-        this.board[nextRow + row][this.col + col] = this.block[row][col];
+        this.board[this.row + row][this.col + col] = this.block[row][col];
       }
     }
-    this.row = nextRow;
-    this.col = this.col;
   }
 
   hasFalling() {
