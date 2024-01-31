@@ -2,9 +2,9 @@ import { Tetromino } from "./Tetromino.mjs";
 
 export class Board {
   constructor(width, height) {
-    this.width = width;
-    this.height = height;
     this.board = this.resetBoard(width, height);
+    this.boardWidth = width;
+    this.boardHeight = height;
     this.falling = false;
     this.row = null;
     this.col = null;
@@ -32,7 +32,7 @@ export class Board {
     this.block = block;
     this.blockWidth = block[0].length;
     this.blockHeight = block.length;
-    const startingCol = Math.floor((this.width - this.blockWidth) / 2);
+    const startingCol = Math.floor((this.boardWidth - this.blockWidth) / 2);
     const startingRow = 0;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
@@ -56,7 +56,7 @@ export class Board {
   }
 
   canMoveDown() {
-    if (this.row + this.blockHeight >= this.height) {
+    if (this.row + this.blockHeight >= this.boardHeight) {
       return false;
     }
     for (let col = 0; col < this.blockWidth; col++) {
