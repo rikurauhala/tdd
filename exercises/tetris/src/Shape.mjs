@@ -46,7 +46,7 @@ export class Shape {
   };
 
   static getShape(letter) {
-    const shapes = { I: Shape.I_SHAPE, O: Shape.O_SHAPE, T: Shape.T_SHAPE };
+    const shapes = Object.fromEntries(Object.values(Shape).map((shape) => [shape.letter, shape]));
     return shapes[letter];
   }
 
