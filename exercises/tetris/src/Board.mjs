@@ -48,39 +48,39 @@ export class Board {
     if (!this.falling) {
       return;
     }
-    if (!this.canMoveDown(this.row, this.col)) {
+    if (!this.canMoveDown()) {
       this.falling = false;
       return;
     }
-    this.moveBlockDown(this.row, this.col);
+    this.moveBlockDown();
   }
 
-  canMoveDown(currentRow, startingCol) {
-    if (currentRow + this.blockHeight >= this.height) {
+  canMoveDown() {
+    if (this.row + this.blockHeight >= this.height) {
       return false;
     }
     for (let col = 0; col < this.blockWidth; col++) {
-      if (this.board[currentRow + this.blockHeight][startingCol + col] !== ".") {
+      if (this.board[this.row + this.blockHeight][this.col + col] !== ".") {
         return false;
       }
     }
     return true;
   }
 
-  moveBlockDown(currentRow, startingCol) {
+  moveBlockDown() {
     for (let row = 0; row < this.blockWidth; row++) {
       for (let col = 0; col < this.blockHeight; col++) {
-        this.board[currentRow + row][startingCol + col] = ".";
+        this.board[this.row + row][this.col + col] = ".";
       }
     }
-    const nextRow = currentRow + 1;
+    const nextRow = this.row + 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
-        this.board[nextRow + row][startingCol + col] = this.block[row][col];
+        this.board[nextRow + row][this.col + col] = this.block[row][col];
       }
     }
     this.row = nextRow;
-    this.col = startingCol;
+    this.col = this.col;
   }
 
   hasFalling() {
