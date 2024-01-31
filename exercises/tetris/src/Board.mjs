@@ -26,15 +26,15 @@ export class Board {
       block = block
         .toString()
         .split("\n")
-        .filter((row) => row);
+        .filter((row) => !/^\.*$/.test(row.trim()));
     }
     this.previousBlock = block;
     this.previousBlockWidth = block[0].length;
     this.previousBlockHeight = block.length;
     const startingCol = Math.floor((this.width - this.previousBlockWidth) / 2);
     const startingRow = 0;
-    for (let row = 0; row < this.previousBlockWidth; row++) {
-      for (let col = 0; col < this.previousBlockHeight; col++) {
+    for (let row = 0; row < this.previousBlockHeight; row++) {
+      for (let col = 0; col < this.previousBlockWidth; col++) {
         this.board[startingRow + row][startingCol + col] = block[row][col];
       }
     }
@@ -74,8 +74,8 @@ export class Board {
     }
 
     const nextRow = currentRow + 1;
-    for (let row = 0; row < this.previousBlockWidth; row++) {
-      for (let col = 0; col < this.previousBlockHeight; col++) {
+    for (let row = 0; row < this.previousBlockHeight; row++) {
+      for (let col = 0; col < this.previousBlockWidth; col++) {
         this.board[nextRow + row][startingCol + col] = this.previousBlock[row][col];
       }
     }
