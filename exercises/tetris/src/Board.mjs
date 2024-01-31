@@ -23,7 +23,10 @@ export class Board {
     }
     if (block instanceof Tetromino) {
       this.previousLetter = block.letter;
-      block = block.toString().split("\n");
+      block = block
+        .toString()
+        .split("\n")
+        .filter((row) => row);
     } else {
       this.previousLetter = block;
     }
