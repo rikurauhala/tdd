@@ -8,7 +8,7 @@ export class Board {
     this.falling = false;
     this.previousPosition = null;
     this.previousBlock = null;
-    this.previousBlockWidth = null;
+    this.blockWidth = null;
     this.previousBlockHeight = null;
   }
 
@@ -29,12 +29,12 @@ export class Board {
         .filter((row) => !/^\.*$/.test(row.trim()));
     }
     this.previousBlock = block;
-    this.previousBlockWidth = block[0].length;
+    this.blockWidth = block[0].length;
     this.previousBlockHeight = block.length;
-    const startingCol = Math.floor((this.width - this.previousBlockWidth) / 2);
+    const startingCol = Math.floor((this.width - this.blockWidth) / 2);
     const startingRow = 0;
     for (let row = 0; row < this.previousBlockHeight; row++) {
-      for (let col = 0; col < this.previousBlockWidth; col++) {
+      for (let col = 0; col < this.blockWidth; col++) {
         this.board[startingRow + row][startingCol + col] = block[row][col];
       }
     }
@@ -58,7 +58,7 @@ export class Board {
     if (currentRow + this.previousBlockHeight >= this.height) {
       return false;
     }
-    for (let col = 0; col < this.previousBlockWidth; col++) {
+    for (let col = 0; col < this.blockWidth; col++) {
       if (this.board[currentRow + this.previousBlockHeight][startingCol + col] !== ".") {
         return false;
       }
@@ -67,7 +67,7 @@ export class Board {
   }
 
   moveBlockDown(currentRow, startingCol) {
-    for (let row = 0; row < this.previousBlockWidth; row++) {
+    for (let row = 0; row < this.blockWidth; row++) {
       for (let col = 0; col < this.previousBlockHeight; col++) {
         this.board[currentRow + row][startingCol + col] = ".";
       }
@@ -75,7 +75,7 @@ export class Board {
 
     const nextRow = currentRow + 1;
     for (let row = 0; row < this.previousBlockHeight; row++) {
-      for (let col = 0; col < this.previousBlockWidth; col++) {
+      for (let col = 0; col < this.blockWidth; col++) {
         this.board[nextRow + row][startingCol + col] = this.previousBlock[row][col];
       }
     }
