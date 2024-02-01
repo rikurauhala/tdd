@@ -87,7 +87,7 @@ describe("Falling T shape tetrominoes", () => {
       );
     });
 
-    test.skip("twice", () => {
+    test("twice", () => {
       board.moveRight();
       board.moveRight();
       expect(board.toString()).to.equalShape(
@@ -100,7 +100,7 @@ describe("Falling T shape tetrominoes", () => {
       );
     });
 
-    test.skip("three times", () => {
+    test("three times", () => {
       board.moveRight();
       board.moveRight();
       board.moveRight();
@@ -114,7 +114,7 @@ describe("Falling T shape tetrominoes", () => {
       );
     });
 
-    test.skip("four times", () => {
+    test("four times", () => {
       board.moveRight();
       board.moveRight();
       board.moveRight();
@@ -129,7 +129,7 @@ describe("Falling T shape tetrominoes", () => {
       );
     });
 
-    test.skip("is not possible beyond the board", () => {
+    test("is not possible beyond the board", () => {
       board.moveRight();
       board.moveRight();
       board.moveRight();
