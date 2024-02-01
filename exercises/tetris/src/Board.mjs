@@ -80,7 +80,9 @@ export class Board {
   }
 
   canMoveLeft() {
-    if (this.col === 0) return false;
+    if (this.col === 0) {
+      return false;
+    }
     for (let row = 0; row < this.blockHeight; row++) {
       if (
         this.board[this.row + row][this.col - 1] !== "." ||
@@ -93,7 +95,9 @@ export class Board {
   }
 
   moveLeft() {
-    //if (!this.canMoveLeft()) return;
+    if (!this.canMoveLeft()) {
+      return;
+    }
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
         this.board[this.row + row][this.col + col] = ".";
