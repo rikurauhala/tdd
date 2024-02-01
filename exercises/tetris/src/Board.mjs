@@ -113,7 +113,17 @@ export class Board {
   }
 
   moveRight() {
-    // implement
+    for (let row = 0; row < this.blockHeight; row++) {
+      for (let col = 0; col < this.blockWidth; col++) {
+        this.board[this.row + row][this.col + col] = ".";
+      }
+    }
+    this.col += 1;
+    for (let row = 0; row < this.blockHeight; row++) {
+      for (let col = 0; col < this.blockWidth; col++) {
+        this.board[this.row + row][this.col + col] = this.block[row][col];
+      }
+    }
   }
 
   hasFalling() {
