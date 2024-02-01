@@ -50,6 +50,10 @@ export class Shape {
     return shapes[letter];
   }
 
+  static getLetters() {
+    return Object.values(Shape).map((shape) => shape.letter);
+  }
+
   static getRotation(shape, rotation) {
     const rotations = shape.rotations.length;
     const normalizedRotation = ((rotation % rotations) + rotations) % rotations;

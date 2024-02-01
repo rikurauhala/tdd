@@ -14,7 +14,7 @@ export class Tetromino {
   }
 
   determineLetter(shapeString) {
-    return ["I", "O", "T"].find((shape) => shapeString.includes(shape));
+    return Shape.getLetters().find((shape) => shapeString.includes(shape));
   }
 
   rotateRight() {
