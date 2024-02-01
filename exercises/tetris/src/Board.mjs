@@ -66,6 +66,9 @@ export class Board {
   }
 
   moveDown() {
+    if (!this.canMoveDown()) {
+      return;
+    }
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
         this.board[this.row + row][this.col + col] = ".";
