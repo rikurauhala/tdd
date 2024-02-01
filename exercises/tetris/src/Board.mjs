@@ -109,7 +109,15 @@ export class Board {
   }
 
   canMoveRight() {
-    // implement
+    if (this.col + this.blockWidth >= this.boardWidth) {
+      return false;
+    }
+    for (let row = 0; row < this.blockHeight; row++) {
+      if (this.board[this.row + row][this.col + this.blockWidth] !== ".") {
+        return false;
+      }
+    }
+    return true;
   }
 
   moveRight() {
