@@ -65,6 +65,10 @@ export class Board {
     return true;
   }
 
+  moveBlockLeft() {
+    // implement
+  }
+
   moveBlockDown() {
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
