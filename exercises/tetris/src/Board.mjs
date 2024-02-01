@@ -80,7 +80,16 @@ export class Board {
   }
 
   canMoveLeft() {
-    // implement
+    if (this.col === 0) return false;
+    for (let row = 0; row < this.blockHeight; row++) {
+      if (
+        this.board[this.row + row][this.col - 1] !== "." ||
+        this.board[this.row + row][this.col - 1 + this.blockWidth] !== "."
+      ) {
+        return false;
+      }
+    }
+    return true;
   }
 
   moveLeft() {
