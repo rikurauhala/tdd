@@ -121,6 +121,9 @@ export class Board {
   }
 
   moveRight() {
+    if (!this.canMoveRight()) {
+      return;
+    }
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
         this.board[this.row + row][this.col + col] = ".";
