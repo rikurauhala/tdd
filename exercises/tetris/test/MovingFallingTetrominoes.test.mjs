@@ -49,8 +49,10 @@ describe("Falling T shape tetrominoes", () => {
          ..........`
       );
     });
+  });
 
-    test("is not possible beyond the board", () => {
+  describe("cannot be moved left", () => {
+    test("beyond the board", () => {
       board.moveLeft();
       board.moveLeft();
       board.moveLeft();
@@ -128,8 +130,10 @@ describe("Falling T shape tetrominoes", () => {
          ..........`
       );
     });
+  });
 
-    test("is not possible beyond the board", () => {
+  describe("cannot be moved right", () => {
+    test("beyond the board", () => {
       board.moveRight();
       board.moveRight();
       board.moveRight();
@@ -208,8 +212,10 @@ describe("Falling T shape tetrominoes", () => {
          ...TTT....`
       );
     });
+  });
 
-    test("is not possible beyond the board", () => {
+  describe("cannot be moved down", () => {
+    test("beyond the board", () => {
       board.moveDown();
       board.moveDown();
       board.moveDown();
