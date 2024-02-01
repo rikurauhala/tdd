@@ -50,7 +50,7 @@ export class Board {
       this.falling = false;
       return;
     }
-    this.moveBlockDown();
+    this.moveDown();
   }
 
   canMoveDown() {
@@ -65,11 +65,7 @@ export class Board {
     return true;
   }
 
-  moveBlockLeft() {
-    // implement
-  }
-
-  moveBlockDown() {
+  moveDown() {
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
         this.board[this.row + row][this.col + col] = ".";
@@ -81,6 +77,14 @@ export class Board {
         this.board[this.row + row][this.col + col] = this.block[row][col];
       }
     }
+  }
+
+  canMoveLeft() {
+    // implement
+  }
+
+  moveLeft() {
+    // implement
   }
 
   hasFalling() {
