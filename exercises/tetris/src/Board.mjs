@@ -84,10 +84,7 @@ export class Board {
       return false;
     }
     for (let row = 0; row < this.blockHeight; row++) {
-      if (
-        this.board[this.row + row][this.col - 1] !== "." ||
-        this.board[this.row + row][this.col - 1 + this.blockWidth] !== "."
-      ) {
+      if (this.board[this.row + row][this.col - 1] !== ".") {
         return false;
       }
     }
