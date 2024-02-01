@@ -108,6 +108,14 @@ export class Board {
     }
   }
 
+  canMoveRight() {
+    // implement
+  }
+
+  moveRight() {
+    // implement
+  }
+
   hasFalling() {
     return this.falling;
   }
