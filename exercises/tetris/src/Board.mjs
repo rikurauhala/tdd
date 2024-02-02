@@ -28,9 +28,7 @@ export class Board {
       this.block = block;
       block = this.stripEmptyRows(block);
     }
-    this.blockString = block;
-    this.blockWidth = block[0].length;
-    this.blockHeight = block.length;
+    this.updateBlock(block);
     this.row = 0;
     this.col = Math.floor((this.boardWidth - this.blockWidth) / 2);
     for (let row = 0; row < this.blockHeight; row++) {
@@ -46,6 +44,12 @@ export class Board {
       .toString()
       .split("\n")
       .filter((row) => !/^\.*$/.test(row.trim()));
+  }
+
+  updateBlock(blockString) {
+    this.blockString = blockString;
+    this.blockWidth = blockString[0].length;
+    this.blockHeight = blockString.length;
   }
 
   tick() {
