@@ -111,11 +111,7 @@ export class Board {
     }
     this.clearBlock();
     this.row += 1;
-    for (let row = 0; row < this.blockHeight; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = this.blockString[row][col];
-      }
-    }
+    this.moveBlock();
   }
 
   canMoveLeft() {
@@ -137,11 +133,7 @@ export class Board {
     }
     this.clearBlock();
     this.col -= 1;
-    for (let row = 0; row < this.blockHeight; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = this.blockString[row][col];
-      }
-    }
+    this.moveBlock();
   }
 
   canMoveRight() {
@@ -163,11 +155,7 @@ export class Board {
     }
     this.clearBlock();
     this.col += 1;
-    for (let row = 0; row < this.blockHeight; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = this.blockString[row][col];
-      }
-    }
+    this.moveBlock();
   }
 
   rotateLeft() {
@@ -175,11 +163,7 @@ export class Board {
     this.block = this.block.rotateLeft();
     this.blockString = this.stripEmpty(this.block.toString());
     this.updateBlock(this.blockString);
-    for (let row = 0; row < this.blockHeight; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = this.blockString[row][col];
-      }
-    }
+    this.moveBlock();
   }
 
   hasFalling() {
