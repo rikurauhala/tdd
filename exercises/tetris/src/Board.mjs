@@ -46,6 +46,23 @@ export class Board {
       .filter((row) => !/^\.*$/.test(row.trim()));
   }
 
+  stripEmpty(block) {
+    if (typeof block === "string") {
+      block = block.split("\n");
+    }
+    const nonEmptyRows = block.filter((row) => row.trim() !== "");
+    const nonEmptyCols = Array.from({ length: block[0].length }, (_, col) =>
+      nonEmptyRows.some((row) => row[col] !== ".")
+    );
+    const strippedBlock = nonEmptyRows.map((row) =>
+      row
+        .split("")
+        .filter((_, col) => nonEmptyCols[col])
+        .join("")
+    );
+    return strippedBlock;
+  }
+
   updateBlock(blockString) {
     this.blockString = blockString;
     this.blockWidth = blockString[0].length;
@@ -142,6 +159,22 @@ export class Board {
       }
     }
     this.col += 1;
+    for (let row = 0; row < this.blockHeight; row++) {
+      for (let col = 0; col < this.blockWidth; col++) {
+        this.board[this.row + row][this.col + col] = this.blockString[row][col];
+      }
+    }
+  }
+
+  rotateLeft() {
+    for (let row = 0; row < this.blockHeight; row++) {
+      for (let col = 0; col < this.blockWidth; col++) {
+        this.board[this.row + row][this.col + col] = ".";
+      }
+    }
+    this.block = this.block.rotateLeft();
+    this.blockString = this.stripEmpty(this.block.toString());
+    this.updateBlock(this.blockString);
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
         this.board[this.row + row][this.col + col] = this.blockString[row][col];
