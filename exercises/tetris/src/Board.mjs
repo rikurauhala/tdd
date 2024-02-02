@@ -9,6 +9,7 @@ export class Board {
     this.row = null;
     this.col = null;
     this.block = null;
+    this.blockString = null;
     this.blockWidth = null;
     this.blockHeight = null;
   }
@@ -24,12 +25,13 @@ export class Board {
       throw new Error("already falling");
     }
     if (block instanceof Tetromino) {
+      this.block = block;
       block = block
         .toString()
         .split("\n")
         .filter((row) => !/^\.*$/.test(row.trim()));
     }
-    this.block = block;
+    this.blockString = block;
     this.blockWidth = block[0].length;
     this.blockHeight = block.length;
     this.row = 0;
@@ -74,7 +76,7 @@ export class Board {
     this.row += 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = this.block[row][col];
+        this.board[this.row + row][this.col + col] = this.blockString[row][col];
       }
     }
   }
@@ -104,7 +106,7 @@ export class Board {
     this.col -= 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = this.block[row][col];
+        this.board[this.row + row][this.col + col] = this.blockString[row][col];
       }
     }
   }
@@ -134,7 +136,7 @@ export class Board {
     this.col += 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = this.block[row][col];
+        this.board[this.row + row][this.col + col] = this.blockString[row][col];
       }
     }
   }
