@@ -77,6 +77,14 @@ export class Board {
     this.blockHeight = blockString.length;
   }
 
+  moveBlock() {
+    for (let row = 0; row < this.blockHeight; row++) {
+      for (let col = 0; col < this.blockWidth; col++) {
+        this.board[this.row + row][this.col + col] = this.blockString[row][col];
+      }
+    }
+  }
+
   tick() {
     if (!this.falling) {
       return;
