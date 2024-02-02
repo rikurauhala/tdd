@@ -95,6 +95,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
+      expect(board.hasFalling()).toBe(true);
       board.moveLeft();
       expect(board.toString()).to.equalShape(
         `.X.T......
@@ -104,6 +105,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
+      expect(board.hasFalling()).toBe(false);
     });
   });
 
@@ -217,6 +219,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
+      expect(board.hasFalling()).toBe(true);
       board.moveRight();
       expect(board.toString()).to.equalShape(
         `......T.X.
@@ -226,6 +229,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
+      expect(board.hasFalling()).toBe(false);
     });
   });
 
@@ -331,6 +335,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
+      expect(board.hasFalling()).toBe(true);
       board.moveDown();
       expect(board.toString()).to.equalShape(
         `..........
@@ -340,6 +345,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
+      expect(board.hasFalling()).toBe(false);
     });
   });
 });
