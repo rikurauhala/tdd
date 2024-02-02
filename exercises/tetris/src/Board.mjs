@@ -101,11 +101,7 @@ export class Board {
       this.falling = false;
       return;
     }
-    for (let row = 0; row < this.blockHeight; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = ".";
-      }
-    }
+    this.clearBlock();
     this.row += 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
@@ -131,11 +127,7 @@ export class Board {
       this.falling = false;
       return;
     }
-    for (let row = 0; row < this.blockHeight; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = ".";
-      }
-    }
+    this.clearBlock();
     this.col -= 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
@@ -161,11 +153,7 @@ export class Board {
       this.falling = false;
       return;
     }
-    for (let row = 0; row < this.blockHeight; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = ".";
-      }
-    }
+    this.clearBlock();
     this.col += 1;
     for (let row = 0; row < this.blockHeight; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
@@ -175,11 +163,7 @@ export class Board {
   }
 
   rotateLeft() {
-    for (let row = 0; row < this.blockHeight; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        this.board[this.row + row][this.col + col] = ".";
-      }
-    }
+    this.clearBlock();
     this.block = this.block.rotateLeft();
     this.blockString = this.stripEmpty(this.block.toString());
     this.updateBlock(this.blockString);
