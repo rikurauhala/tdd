@@ -20,6 +20,14 @@ export class Board {
       .map(() => Array(width).fill("."));
   }
 
+  clearBlock() {
+    for (let row = 0; row < this.blockHeight; row++) {
+      for (let col = 0; col < this.blockWidth; col++) {
+        this.board[this.row + row][this.col + col] = ".";
+      }
+    }
+  }
+
   drop(block) {
     if (this.falling) {
       throw new Error("already falling");
