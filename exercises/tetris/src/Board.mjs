@@ -46,10 +46,6 @@ export class Board {
     if (!this.falling) {
       return;
     }
-    if (!this.canMoveDown()) {
-      this.falling = false;
-      return;
-    }
     this.moveDown();
   }
 
@@ -67,6 +63,7 @@ export class Board {
 
   moveDown() {
     if (!this.canMoveDown()) {
+      this.falling = false;
       return;
     }
     for (let row = 0; row < this.blockHeight; row++) {
@@ -96,6 +93,7 @@ export class Board {
 
   moveLeft() {
     if (!this.canMoveLeft()) {
+      this.falling = false;
       return;
     }
     for (let row = 0; row < this.blockHeight; row++) {
@@ -125,6 +123,7 @@ export class Board {
 
   moveRight() {
     if (!this.canMoveRight()) {
+      this.falling = false;
       return;
     }
     for (let row = 0; row < this.blockHeight; row++) {
