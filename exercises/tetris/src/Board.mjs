@@ -26,10 +26,7 @@ export class Board {
     }
     if (block instanceof Tetromino) {
       this.block = block;
-      block = block
-        .toString()
-        .split("\n")
-        .filter((row) => !/^\.*$/.test(row.trim()));
+      block = this.stripEmptyRows(block);
     }
     this.blockString = block;
     this.blockWidth = block[0].length;
@@ -42,6 +39,13 @@ export class Board {
       }
     }
     this.falling = true;
+  }
+
+  stripEmptyRows(block) {
+    return block
+      .toString()
+      .split("\n")
+      .filter((row) => !/^\.*$/.test(row.trim()));
   }
 
   tick() {
