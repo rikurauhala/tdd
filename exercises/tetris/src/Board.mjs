@@ -158,7 +158,12 @@ export class Board {
     this.moveBlock();
   }
 
+  canBeRotatedLeft() {
+    return true;
+  }
+
   rotateLeft() {
+    if (!this.canBeRotatedLeft()) return;
     this.clearBlock();
     this.block = this.block.rotateLeft();
     this.blockString = this.stripEmptyRows(this.block.toString());
@@ -166,7 +171,12 @@ export class Board {
     this.moveBlock();
   }
 
+  canBeRotatedRight() {
+    return true;
+  }
+
   rotateRight() {
+    if (!this.canBeRotatedRight()) return;
     this.clearBlock();
     this.block = this.block.rotateRight();
     this.blockString = this.stripEmptyRows(this.block.toString());
