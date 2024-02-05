@@ -23,7 +23,7 @@ describe("Falling T shape tetrominoes", () => {
       );
     });
 
-    skip("twice", () => {
+    test("twice", () => {
       board.rotateLeft();
       board.rotateLeft();
       expect(board.toString()).to.equalShape(
