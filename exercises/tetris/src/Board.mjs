@@ -161,7 +161,7 @@ export class Board {
   rotateLeft() {
     this.clearBlock();
     this.block = this.block.rotateLeft();
-    this.blockString = this.stripEmpty(this.block.toString());
+    this.blockString = this.stripEmptyRows(this.block.toString());
     this.updateBlock(this.blockString);
     this.moveBlock();
   }
