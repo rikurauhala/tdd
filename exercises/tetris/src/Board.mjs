@@ -159,6 +159,38 @@ export class Board {
   }
 
   canBeRotatedLeft() {
+    const occupiedCells = [];
+    for (let row = 0; row < this.blockHeight + 1; row++) {
+      for (let col = 0; col < this.blockWidth; col++) {
+        console.log(this.board[this.row + row][this.col + col]);
+        if (
+          this.board[this.row + row][this.col + col] !== this.block.letter &&
+          this.board[this.row + row][this.col + col] !== "."
+        ) {
+          occupiedCells.push([row, col]);
+        }
+      }
+    }
+    const rotatedBlockString = this.block
+      .rotateLeft()
+      .toString()
+      .split("\n")
+      .map((line) => line.split(""))
+      .filter((line) => line.length > 0);
+    for (let row = 0; row < rotatedBlockString.length; row++) {
+      for (let col = 0; col < rotatedBlockString[0].length; col++) {
+        const cell = [row, col];
+        if (
+          occupiedCells.some(
+            (occupiedCell) =>
+              occupiedCell.length === cell.length && occupiedCell.every((value, index) => value === cell[index])
+          ) &&
+          rotatedBlockString[row][col] === this.block.letter
+        ) {
+          return false;
+        }
+      }
+    }
     return true;
   }
 
