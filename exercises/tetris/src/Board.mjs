@@ -143,13 +143,11 @@ export class Board {
 
   canBeRotatedLeft() {
     const occupiedCells = [];
+    // fix the block height
     for (let row = 0; row < this.blockHeight + 1; row++) {
       for (let col = 0; col < this.blockWidth; col++) {
-        console.log(this.board[this.row + row][this.col + col]);
-        if (
-          this.board[this.row + row][this.col + col] !== this.block.letter &&
-          this.board[this.row + row][this.col + col] !== "."
-        ) {
+        const cell = this.board[this.row + row][this.col + col];
+        if (cell !== this.block.letter && cell !== ".") {
           occupiedCells.push([row, col]);
         }
       }
