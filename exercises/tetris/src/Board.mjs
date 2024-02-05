@@ -166,6 +166,14 @@ export class Board {
     this.moveBlock();
   }
 
+  rotateRight() {
+    this.clearBlock();
+    this.block = this.block.rotateRight();
+    this.blockString = this.stripEmptyRows(this.block.toString());
+    this.updateBlock(this.blockString);
+    this.moveBlock();
+  }
+
   hasFalling() {
     return this.falling;
   }
