@@ -54,23 +54,6 @@ export class Board {
       .filter((row) => !/^\.*$/.test(row.trim()));
   }
 
-  stripEmpty(block) {
-    if (typeof block === "string") {
-      block = block.split("\n");
-    }
-    const nonEmptyRows = block.filter((row) => row.trim() !== "");
-    const nonEmptyCols = Array.from({ length: block[0].length }, (_, col) =>
-      nonEmptyRows.some((row) => row[col] !== ".")
-    );
-    const strippedBlock = nonEmptyRows.map((row) =>
-      row
-        .split("")
-        .filter((_, col) => nonEmptyCols[col])
-        .join("")
-    );
-    return strippedBlock;
-  }
-
   updateBlock(blockString) {
     this.blockString = blockString;
     this.blockWidth = blockString[0].length;
