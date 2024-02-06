@@ -141,9 +141,11 @@ export class Board {
     this.moveBlock();
   }
 
-  canBeRotatedLeft() {
+  canBeRotated(direction) {
     const occupiedCells = this.getOccupiedCells();
-    const rotatedBlock = this.getRotatedBlock(this.block.rotateLeft());
+    const rotatedBlock = this.getRotatedBlock(
+      direction === "left" ? this.block.rotateLeft() : this.block.rotateRight()
+    );
     for (let row = 0; row < rotatedBlock.length; row++) {
       for (let col = 0; col < rotatedBlock[0].length; col++) {
         const cell = [row, col];
@@ -186,7 +188,7 @@ export class Board {
   }
 
   rotateLeft() {
-    if (!this.canBeRotatedLeft()) return;
+    if (!this.canBeRotated("left")) return;
     this.clearBlock();
     this.block = this.block.rotateLeft();
     this.blockString = this.stripEmptyRows(this.block.toString());
@@ -199,7 +201,7 @@ export class Board {
   }
 
   rotateRight() {
-    if (!this.canBeRotatedRight()) return;
+    if (!this.canBeRotated("right")) return;
     this.clearBlock();
     this.block = this.block.rotateRight();
     this.blockString = this.stripEmptyRows(this.block.toString());
