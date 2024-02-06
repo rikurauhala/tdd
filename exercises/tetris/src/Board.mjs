@@ -142,37 +142,47 @@ export class Board {
   }
 
   canBeRotatedLeft() {
-    const occupiedCells = [];
-    // fix the block height
-    for (let row = 0; row < this.blockHeight + 1; row++) {
-      for (let col = 0; col < this.blockWidth; col++) {
-        const cell = this.board[this.row + row][this.col + col];
-        if (cell !== this.block.letter && cell !== ".") {
-          occupiedCells.push([row, col]);
-        }
-      }
-    }
-    const rotatedBlockString = this.block
-      .rotateLeft()
-      .toString()
-      .split("\n")
-      .map((line) => line.split(""))
-      .filter((line) => line.length > 0);
-    for (let row = 0; row < rotatedBlockString.length; row++) {
-      for (let col = 0; col < rotatedBlockString[0].length; col++) {
+    const occupiedCells = this.getOccupiedCells();
+    const rotatedBlock = this.getRotatedBlock(this.block.rotateLeft());
+    for (let row = 0; row < rotatedBlock.length; row++) {
+      for (let col = 0; col < rotatedBlock[0].length; col++) {
         const cell = [row, col];
-        if (
-          occupiedCells.some(
-            (occupiedCell) =>
-              occupiedCell.length === cell.length && occupiedCell.every((value, index) => value === cell[index])
-          ) &&
-          rotatedBlockString[row][col] === this.block.letter
-        ) {
+        const isOccupied = this.isCellOccupied(cell, occupiedCells);
+        const isBlockLetter = rotatedBlock[row][col] === this.block.letter;
+        if (isOccupied && isBlockLetter) {
           return false;
         }
       }
     }
     return true;
+  }
+
+  getOccupiedCells() {
+    const occupiedCells = [];
+    for (let row = 0; row < this.blockHeight + 1; row++) {
+      for (let col = 0; col < this.blockWidth; col++) {
+        const boardCell = this.board[this.row + row][this.col + col];
+        if (boardCell !== this.block.letter && boardCell !== ".") {
+          occupiedCells.push([row, col]);
+        }
+      }
+    }
+    return occupiedCells;
+  }
+
+  getRotatedBlock(block) {
+    return block
+      .toString()
+      .split("\n")
+      .map((line) => line.split(""))
+      .filter((line) => line.length > 0);
+  }
+
+  isCellOccupied(cell, occupiedCells) {
+    return occupiedCells.some(
+      (occupiedCell) =>
+        occupiedCell.length === cell.length && occupiedCell.every((value, index) => value === cell[index])
+    );
   }
 
   rotateLeft() {
