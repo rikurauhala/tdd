@@ -105,7 +105,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
-      expect(board.hasFalling()).toBe(false);
+      expect(board.hasFalling()).toBe(true);
     });
   });
 
@@ -162,6 +162,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
+      expect(board.hasFalling()).toBe(true);
     });
   });
 
@@ -188,6 +189,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
+      expect(board.hasFalling()).toBe(true);
     });
 
     test("through other blocks", () => {
@@ -229,7 +231,7 @@ describe("Falling T shape tetrominoes", () => {
          ..........
          ..........`
       );
-      expect(board.hasFalling()).toBe(false);
+      expect(board.hasFalling()).toBe(true);
     });
   });
 
@@ -312,6 +314,7 @@ describe("Falling T shape tetrominoes", () => {
          ....T.....
          ...TTT....`
       );
+      expect(board.hasFalling()).toBe(false);
     });
 
     test("through other blocks", () => {

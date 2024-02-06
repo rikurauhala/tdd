@@ -111,7 +111,6 @@ export class Board {
 
   moveLeft() {
     if (!this.canMoveLeft()) {
-      this.falling = false;
       return;
     }
     this.clearBlock();
@@ -133,7 +132,6 @@ export class Board {
 
   moveRight() {
     if (!this.canMoveRight()) {
-      this.falling = false;
       return;
     }
     this.clearBlock();
