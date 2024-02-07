@@ -168,3 +168,31 @@ describe("Falling T shape tetrominoes", () => {
     });
   });
 });
+
+describe("Falling O shape tetrominoes", () => {
+  const boardWithOShape = `....OO....\n....OO....\n..........\n..........\n..........\n..........`;
+
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+    board.drop(Tetromino.O_SHAPE);
+  });
+
+  describe("cannot be rotated left", () => {
+    for (let i = 0; i < 4; i++) {
+      test(`${i} times`, () => {
+        board.rotateLeft();
+        expect(board.toString()).to.equalShape(boardWithOShape);
+      });
+    }
+  });
+
+  describe("cannot be rotated right", () => {
+    for (let i = 0; i < 4; i++) {
+      test(`${i} times`, () => {
+        board.rotateRight();
+        expect(board.toString()).to.equalShape(boardWithOShape);
+      });
+    }
+  });
+});
