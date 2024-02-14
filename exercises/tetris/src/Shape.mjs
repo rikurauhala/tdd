@@ -13,6 +13,24 @@ export class Shape {
     ],
   };
 
+  static J_SHAPE = {
+    letter: "J",
+    rotations: [
+      `JJJ
+       ..J
+       ...`,
+      `.J.
+       .J.
+       JJ.`,
+      `J..
+       JJJ
+       ...`,
+      `.JJ
+       .J.
+       .J.`,
+    ],
+  };
+
   static L_SHAPE = {
     letter: "L",
     rotations: [
