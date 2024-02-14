@@ -3,6 +3,7 @@ import { RotatingShape } from "./RotatingShape";
 
 export class Tetromino {
   static I_SHAPE = new Tetromino(Shape.I_SHAPE.rotations[0]);
+  static L_SHAPE = new Tetromino(Shape.L_SHAPE.rotations[0]);
   static O_SHAPE = new Tetromino(Shape.O_SHAPE.rotations[0]);
   static T_SHAPE = new Tetromino(Shape.T_SHAPE.rotations[0]);
 
