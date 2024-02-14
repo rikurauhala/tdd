@@ -1,7 +1,6 @@
 export class Shape {
   static I_SHAPE = {
     letter: "I",
-    size: 5,
     rotations: [
       `....
        IIII
@@ -16,7 +15,6 @@ export class Shape {
 
   static O_SHAPE = {
     letter: "O",
-    size: 3,
     rotations: [
       `.OO
        .OO
@@ -26,7 +24,6 @@ export class Shape {
 
   static T_SHAPE = {
     letter: "T",
-    size: 3,
     rotations: [
       `.T.
        TTT
