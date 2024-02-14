@@ -26,18 +26,22 @@ export class Shape {
   static T_SHAPE = {
     letter: "T",
     rotations: [
-      `.T.
-       TTT
-       ...`,
-      `.T.
-       .TT
-       .T.`,
-      `...
-       TTT
-       .T.`,
-      `.T.
-       TT.
-       .T.`,
+      `....
+       .T..
+       TTT.
+       ....`,
+      `.T..
+       .TT.
+       .T..
+       ....`,
+      `....
+       TTT.
+       .T..
+       ....`,
+      `.T..
+       TT..
+       .T..
+       ....`,
     ],
   };
 
