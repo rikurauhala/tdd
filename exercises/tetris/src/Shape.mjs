@@ -16,9 +16,10 @@ export class Shape {
   static O_SHAPE = {
     letter: "O",
     rotations: [
-      `.OO
-       .OO
-       ...`,
+      `....
+       .OO.
+       .OO.
+       ....`,
     ],
   };
 
