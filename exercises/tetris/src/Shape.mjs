@@ -89,6 +89,18 @@ export class Shape {
     ],
   };
 
+  static Z_SHAPE = {
+    letter: "Z",
+    rotations: [
+      `ZZ.
+       .ZZ
+       ...`,
+      `..Z
+       .ZZ
+       .Z.`,
+    ],
+  };
+
   static getShape(letter) {
     const shapes = Object.fromEntries(Object.values(Shape).map((shape) => [shape.letter, shape]));
     return shapes[letter];

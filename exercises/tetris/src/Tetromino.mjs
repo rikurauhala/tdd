@@ -8,6 +8,7 @@ export class Tetromino {
   static O_SHAPE = new Tetromino(Shape.O_SHAPE.rotations[0]);
   static S_SHAPE = new Tetromino(Shape.S_SHAPE.rotations[0]);
   static T_SHAPE = new Tetromino(Shape.T_SHAPE.rotations[0]);
+  static Z_SHAPE = new Tetromino(Shape.Z_SHAPE.rotations[0]);
 
   constructor(shapeString, rotation = 0) {
     this.letter = this.determineLetter(shapeString);
