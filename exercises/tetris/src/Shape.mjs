@@ -59,6 +59,18 @@ export class Shape {
     ],
   };
 
+  static S_SHAPE = {
+    letter: "S",
+    rotations: [
+      `.SS
+       SS.
+       ...`,
+      `S..
+       SS.
+       .S.`,
+    ],
+  };
+
   static T_SHAPE = {
     letter: "T",
     rotations: [
