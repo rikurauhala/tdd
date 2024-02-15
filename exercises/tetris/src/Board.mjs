@@ -209,7 +209,16 @@ export class Board {
   }
 
   clearLines() {
-    // implement
+    const fullLines = [];
+    for (let row = 0; row < this.boardHeight; row++) {
+      if (this.board[row].every((cell) => cell !== ".")) {
+        fullLines.push(row);
+      }
+    }
+    for (const row of fullLines) {
+      this.board.splice(row, 1);
+      this.board.unshift(Array(this.boardWidth).fill("."));
+    }
   }
 
   hasFalling() {
