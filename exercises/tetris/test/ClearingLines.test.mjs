@@ -116,4 +116,39 @@ describe("Clearing lines works for", () => {
        .........I`
     );
   });
+
+  test("four lines (Tetris)", () => {
+    for (let row = 2; row < 6; row++) {
+      for (let col = 0; col < 9; col++) {
+        board.board[row][col] = "X";
+      }
+    }
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `..........
+       .........I
+       XXXXXXXXXI
+       XXXXXXXXXI
+       XXXXXXXXXI
+       XXXXXXXXX.`
+    );
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       XXXXXXXXXI
+       XXXXXXXXXI
+       XXXXXXXXXI
+       XXXXXXXXXI`
+    );
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ..........`
+    );
+  });
 });
