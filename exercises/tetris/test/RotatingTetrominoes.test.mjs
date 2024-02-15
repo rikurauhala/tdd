@@ -20,8 +20,8 @@ describe("The I shape", () => {
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
-      `....
-       IIII
+      `IIII
+       ....
        ....
        ....`
     );

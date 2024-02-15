@@ -2,8 +2,8 @@ export class Shape {
   static I_SHAPE = {
     letter: "I",
     rotations: [
-      `....
-       IIII
+      `IIII
+       .... 
        ....
        ....`,
       `..I.
