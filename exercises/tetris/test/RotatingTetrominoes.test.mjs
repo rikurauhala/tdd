@@ -19,29 +19,24 @@ describe("The I shape", () => {
   const shape = Tetromino.I_SHAPE;
 
   test("initial orientation", () => {
-    expect(shape.toString()).to.equalShape(
-      `IIII
-       ....
-       ....
-       ....`
-    );
+    expect(shape.toString()).to.equalShape(`IIII`);
   });
 
   test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
-      `..I.
-       ..I.
-       ..I.
-       ..I.`
+      `I
+       I
+       I
+       I`
     );
   });
 
   test("can be rotated left/counter-clockwise", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
-      `..I.
-       ..I.
-       ..I.
-       ..I.`
+      `I
+       I
+       I
+       I`
     );
   });
 
