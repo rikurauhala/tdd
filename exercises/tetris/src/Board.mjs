@@ -90,12 +90,12 @@ export class Board {
   moveDown() {
     if (!this.canMoveDown()) {
       this.falling = false;
+      this.clearLines();
       return;
     }
     this.clearBlock();
     this.row += 1;
     this.moveBlock();
-    this.clearLines();
   }
 
   canMoveLeft() {
