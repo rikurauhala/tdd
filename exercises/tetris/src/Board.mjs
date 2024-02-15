@@ -95,9 +95,7 @@ export class Board {
     this.clearBlock();
     this.row += 1;
     this.moveBlock();
-    if (this.canLineBeCleared()) {
-      this.clearLine();
-    }
+    this.clearLines();
   }
 
   canMoveLeft() {
@@ -210,11 +208,7 @@ export class Board {
     this.moveBlock();
   }
 
-  canLineBeCleared() {
-    // implement
-  }
-
-  clearLine() {
+  clearLines() {
     // implement
   }
 
