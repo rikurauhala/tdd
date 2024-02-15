@@ -46,4 +46,39 @@ describe("Clearing lines", () => {
        .........I`
     );
   });
+
+  test("works for two lines", () => {
+    for (let row = 4; row < 6; row++) {
+      for (let col = 0; col < 9; col++) {
+        board.board[row][col] = "X";
+      }
+    }
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `..........
+       .........I
+       .........I
+       .........I
+       XXXXXXXXXI
+       XXXXXXXXX.`
+    );
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       .........I
+       .........I
+       XXXXXXXXXI
+       XXXXXXXXXI`
+    );
+    board.tick();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       .........I
+       .........I`
+    );
+  });
 });
