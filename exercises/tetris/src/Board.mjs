@@ -1,8 +1,10 @@
 import { Tetromino } from "./Tetromino.mjs";
+import { Score } from "./Score.mjs";
 
 export class Board {
   constructor(width, height) {
     this.board = this.resetBoard(width, height);
+    this.score = new Score();
     this.boardWidth = width;
     this.boardHeight = height;
     this.falling = false;
@@ -18,6 +20,10 @@ export class Board {
     return Array(height)
       .fill()
       .map(() => Array(width).fill("."));
+  }
+
+  getScore() {
+    return this.score.getTotal();
   }
 
   clearBlock() {
@@ -219,6 +225,7 @@ export class Board {
       this.board.splice(row, 1);
       this.board.unshift(Array(this.boardWidth).fill("."));
     }
+    this.score.update(fullLines.length);
   }
 
   hasFalling() {
