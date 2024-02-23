@@ -1,6 +1,6 @@
 import { describe, test } from "vitest";
 import { expect } from "chai";
-import { diceHandValue } from "../src/untestable2.mjs";
+import { diceHandValue } from "../src/testable2.mjs";
 
 describe("diceHandValue ", () => {
   const allowedValues = [101, 102, 103, 104, 105, 106, 2, 3, 4, 5, 6];
