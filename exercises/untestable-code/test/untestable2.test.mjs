@@ -2,7 +2,7 @@ import { describe, test } from "vitest";
 import { expect } from "chai";
 import { diceHandValue } from "../src/testable2.mjs";
 
-describe("diceHandValue ", () => {
+describe("Untestable 2: diceHandValue ", () => {
   const allowedValues = [101, 102, 103, 104, 105, 106, 2, 3, 4, 5, 6];
 
   test("returns only allowed values with default random generator", () => {
