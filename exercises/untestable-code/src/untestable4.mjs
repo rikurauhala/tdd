@@ -1,3 +1,6 @@
+// This code is untestable because it depends on the database.
+// The data in the database may have changed or it may not exist.
+
 import argon2 from "@node-rs/argon2";
 import pg from "pg";
 
@@ -32,7 +35,7 @@ export class PostgresUserDao {
       `select user_id, password_hash
        from users
        where user_id = $1`,
-      [userId]
+      [userId],
     );
     return rows.map(this.#rowToUser)[0] || null;
   }
@@ -43,7 +46,7 @@ export class PostgresUserDao {
        values ($1, $2)
        on conflict (user_id) do update
            set password_hash = excluded.password_hash`,
-      [user.userId, user.passwordHash]
+      [user.userId, user.passwordHash],
     );
   }
 }
