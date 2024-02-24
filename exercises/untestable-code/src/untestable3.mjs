@@ -1,3 +1,6 @@
+// The code is untestable because it depends on the file system.
+// The data in the file may have changed or it may not exist.
+
 import { readFile } from "node:fs/promises";
 import { parse } from "csv-parse/sync";
 
