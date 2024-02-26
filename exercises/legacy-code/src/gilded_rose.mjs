@@ -1,6 +1,7 @@
 export const Items = {
   AGED_BRIE: "Aged Brie",
   BACKSTAGE_PASSES: "Backstage passes to a TAFKAL80ETC concert",
+  CONJURED: "Conjured item",
   SULFURAS: "Sulfuras, Hand of Ragnaros",
   NAMELESS: "other",
 };
@@ -28,6 +29,9 @@ export class Shop {
           break;
         case Items.BACKSTAGE_PASSES:
           this.updateBackstagePassesQuality(item);
+          break;
+        case Items.CONJURED:
+          this.updateConjuredItemQuality(item);
           break;
         case Items.SULFURAS:
           break;
@@ -61,6 +65,12 @@ export class Shop {
     }
     if (item.sellIn < 6 && item.quality < MAX_QUALITY) {
       item.quality++;
+    }
+  }
+
+  updateConjuredItemQuality(item) {
+    if (item.quality > 0) {
+      item.quality -= 2;
     }
   }
 
