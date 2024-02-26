@@ -81,6 +81,16 @@ describe("Gilded Rose", () => {
     });
   });
 
+  describe(Items.CONJURED, () => {
+    generateTest({
+      itemName: Items.CONJURED,
+      sellIn: 1,
+      quality: 3,
+      expectedSellIn: 0,
+      expectedQuality: 1,
+    });
+  });
+
   describe(Items.SULFURAS, () => {
     generateTest({
       itemName: Items.SULFURAS,
