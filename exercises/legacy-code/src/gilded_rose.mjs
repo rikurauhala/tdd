@@ -6,6 +6,7 @@ export const Items = {
   NAMELESS: "other",
 };
 
+const MIN_QUALITY = 0;
 const MAX_QUALITY = 50;
 
 export class Item {
@@ -69,13 +70,13 @@ export class Shop {
   }
 
   updateConjuredItemQuality(item) {
-    if (item.quality > 0) {
+    if (item.quality > MIN_QUALITY) {
       item.quality -= 2;
     }
   }
 
   updateNormalItemQuality(item) {
-    if (item.quality > 0) {
+    if (item.quality > MIN_QUALITY) {
       item.quality--;
     }
   }
@@ -89,7 +90,7 @@ export class Shop {
     }
 
     if (item.name === Items.BACKSTAGE_PASSES) {
-      item.quality = 0;
+      item.quality = MIN_QUALITY;
       return;
     }
 
@@ -97,7 +98,7 @@ export class Shop {
       return;
     }
 
-    if (item.quality > 0) {
+    if (item.quality > MIN_QUALITY) {
       item.quality--;
     }
   }
