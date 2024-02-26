@@ -24,15 +24,15 @@ export class Shop {
     this.items.forEach((item) => {
       switch (item.name) {
         case Items.AGED_BRIE:
-          this.handleAgedBrie(item);
+          this.updateAgedBrieQuality(item);
           break;
         case Items.BACKSTAGE_PASSES:
-          this.handleBackstagePasses(item);
+          this.updateBackstagePassesQuality(item);
           break;
         case Items.SULFURAS:
           break;
         default:
-          this.handleNormalItem(item);
+          this.updateNormalItemQuality(item);
           break;
       }
 
@@ -41,20 +41,20 @@ export class Shop {
       }
 
       if (item.sellIn < 0) {
-        this.handleExpiredItem(item);
+        this.updateExpiredItemQuality(item);
       }
     });
 
     return this.items;
   }
 
-  handleAgedBrie(item) {
+  updateAgedBrieQuality(item) {
     if (item.quality < MAX_QUALITY) {
       item.quality++;
     }
   }
 
-  handleBackstagePasses(item) {
+  updateBackstagePassesQuality(item) {
     if (item.quality >= MAX_QUALITY) {
       return;
     }
@@ -67,13 +67,13 @@ export class Shop {
     }
   }
 
-  handleNormalItem(item) {
+  updateNormalItemQuality(item) {
     if (item.quality > 0) {
       item.quality--;
     }
   }
 
-  handleExpiredItem(item) {
+  updateExpiredItemQuality(item) {
     if (item.name === Items.AGED_BRIE) {
       if (item.quality < MAX_QUALITY) {
         item.quality++;
