@@ -9,7 +9,7 @@ const item = {
   NAMELESS: "",
 };
 
-const generateTest = (itemName, sellIn, quality, expectedSellIn, expectedQuality) => {
+const generateTest = ({ itemName, sellIn, quality, expectedSellIn, expectedQuality }) => {
   test(`sellIn ${sellIn}, quality ${quality}`, () => {
     const gildedRose = new Shop([new Item(itemName, sellIn, quality)]);
     const items = gildedRose.updateQuality();
@@ -27,25 +27,91 @@ describe("Gilded Rose", () => {
   });
 
   describe(item.AGED_BRIE, () => {
-    generateTest(item.AGED_BRIE, 0, 1, -1, 3);
-    generateTest(item.AGED_BRIE, 0, 50, -1, 50);
+    generateTest({
+      itemName: item.AGED_BRIE,
+      sellIn: 0,
+      quality: 1,
+      expectedSellIn: -1,
+      expectedQuality: 3,
+    });
+    generateTest({
+      itemName: item.AGED_BRIE,
+      sellIn: 0,
+      quality: 50,
+      expectedSellIn: -1,
+      expectedQuality: 50,
+    });
   });
 
   describe(item.BACKSTAGE_PASSES, () => {
-    generateTest(item.BACKSTAGE_PASSES, 0, -1, -1, 0);
-    generateTest(item.BACKSTAGE_PASSES, 1, -1, 0, 2);
-    generateTest(item.BACKSTAGE_PASSES, 6, 0, 5, 2);
-    generateTest(item.BACKSTAGE_PASSES, 10, 0, 9, 2);
-    generateTest(item.BACKSTAGE_PASSES, 11, 0, 10, 1);
-    generateTest(item.BACKSTAGE_PASSES, 5, 49, 4, 50);
+    generateTest({
+      itemName: item.BACKSTAGE_PASSES,
+      sellIn: 0,
+      quality: -1,
+      expectedSellIn: -1,
+      expectedQuality: 0,
+    });
+    generateTest({
+      itemName: item.BACKSTAGE_PASSES,
+      sellIn: 1,
+      quality: -1,
+      expectedSellIn: 0,
+      expectedQuality: 2,
+    });
+    generateTest({
+      itemName: item.BACKSTAGE_PASSES,
+      sellIn: 5,
+      quality: 49,
+      expectedSellIn: 4,
+      expectedQuality: 50,
+    });
+    generateTest({
+      itemName: item.BACKSTAGE_PASSES,
+      sellIn: 6,
+      quality: 0,
+      expectedSellIn: 5,
+      expectedQuality: 2,
+    });
+    generateTest({
+      itemName: item.BACKSTAGE_PASSES,
+      sellIn: 10,
+      quality: 0,
+      expectedSellIn: 9,
+      expectedQuality: 2,
+    });
+    generateTest({
+      itemName: item.BACKSTAGE_PASSES,
+      sellIn: 11,
+      quality: 0,
+      expectedSellIn: 10,
+      expectedQuality: 1,
+    });
   });
 
   describe(item.SULFURAS, () => {
-    generateTest(item.SULFURAS, -1, 3, -1, 3);
+    generateTest({
+      itemName: item.SULFURAS,
+      sellIn: -1,
+      quality: 3,
+      expectedSellIn: -1,
+      expectedQuality: 3,
+    });
   });
 
   describe("nameless", () => {
-    generateTest(item.NAMELESS, -1, 3, -2, 1);
-    generateTest(item.NAMELESS, 0, 0, -1, 0);
+    generateTest({
+      itemName: item.NAMELESS,
+      sellIn: -1,
+      quality: 3,
+      expectedSellIn: -2,
+      expectedQuality: 1,
+    });
+    generateTest({
+      itemName: item.NAMELESS,
+      sellIn: 0,
+      quality: 0,
+      expectedSellIn: -1,
+      expectedQuality: 0,
+    });
   });
 });
