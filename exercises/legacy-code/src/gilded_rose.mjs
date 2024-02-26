@@ -1,3 +1,10 @@
+export const Items = {
+  AGED_BRIE: "Aged Brie",
+  BACKSTAGE_PASSES: "Backstage passes to a TAFKAL80ETC concert",
+  SULFURAS: "Sulfuras, Hand of Ragnaros",
+  NAMELESS: "",
+};
+
 export class Item {
   constructor(name, sellIn, quality) {
     this.name = name;
