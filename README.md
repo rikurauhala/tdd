@@ -10,4 +10,5 @@ This repository contains my submissions for the course [Test-Driven Development]
 |  2  | [Tetris](./exercises/tetris/)                   |    30 |   ✓    |
 |  3  | [Untestable code](./exercises/untestable-code/) |     6 |   ✓    |
 |  4  | [Legacy code](./exercises/legacy-code/)         |     4 |   ✓    |
+|  5  | _skipped_                                       |     - |        |
 |     | total                                           |    43 |        |
